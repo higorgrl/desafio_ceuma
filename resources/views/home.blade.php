@@ -3,7 +3,7 @@
 @section('content')
     <pagina tamanho="10">
         <painel titulo="Dashboard">
-            teste de conteúdo...
+                <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
 
             <div class="row">
                 <div class="col-md-4">
