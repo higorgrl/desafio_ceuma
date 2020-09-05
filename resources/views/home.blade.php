@@ -7,13 +7,13 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <caixa quantidade="80" titulo="Cursos" url="{{route('cursos.index')}}" cor="orange" icone="ion ion-pie-graph"></caixa>
+                    <caixa quantidade="{{$totalCursos}}" titulo="Cursos" url="{{route('cursos.index')}}" cor="orange" icone="ion ion-pie-graph"></caixa>
                 </div>
                 <div class="col-md-4">
-                    <caixa quantidade="1500" titulo="Usuários" url="#" cor="green" icone="ion ion-person-stalker"></caixa>
+                    <caixa quantidade="{{$totalUsuarios}}" titulo="Usuários" url="{{route('usuarios.index')}}" cor="green" icone="ion ion-person-stalker"></caixa>
                 </div>
                 <div class="col-md-4">
-                    <caixa quantidade="3" titulo="Autores" url="#" cor="gray" icone="ion ion-person"></caixa>
+                    <caixa quantidade="{{$totalAlunos}}" titulo="Alunos" url="{{route('alunos.index')}}" cor="gray" icone="ion ion-person"></caixa>
                 </div>
             </div>
         </painel>

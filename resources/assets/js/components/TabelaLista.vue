@@ -22,7 +22,7 @@
 
                     <td v-if="detalhe || editar || deletar">
                         
-                        <form v-bind:id="index" v-if="deletar && token" v-bind:action="deletar" method="post">
+                        <form v-bind:id="index" v-if="deletar && token" v-bind:action="deletar + item.id" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" v-bind:value="token">
 
@@ -75,8 +75,11 @@
         },
         computed:{
             lista: function () {
+
+                let lista = this.itens.data;
+
                 if (this.buscar) {
-                    return this.itens.filter(res => {
+                    return lista.filter(res => {
                         res = Object.values(res);
                         for (let k = 0; k < res.length; k++) {
                             if((res[k] + "").toLowerCase().indexOf(this.buscar.toLowerCase()) >= 0){
@@ -86,7 +89,7 @@
                         return false;
                     });  
                 }
-                return this.itens;
+                return lista;
             }
         }
     }

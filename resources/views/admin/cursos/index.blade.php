@@ -14,14 +14,18 @@
 
         <painel titulo="Lista de Artigos">
             <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
-
+            
             <tabela-lista
             v-bind:titulos="['#','Código','Nome','Data de Cadastro','Carga Horária']"
-            v-bind:itens="{{$listaCursos}}"
-            criar="#criar" detalhe="/admin/cursos/" editar="/admin/cursos/" deletar="#deletar" token="788787878787"
-            modal="não"
+            v-bind:itens="{{json_encode($listaCursos)}}"
+            criar="#criar" detalhe="/admin/cursos/" editar="/admin/cursos/" deletar="/admin/cursos/" token="{{ csrf_token() }}"
+            modal="sim"
 
             ></tabela-lista>
+
+            <div align="center">
+                {{$listaCursos}}
+            </div>
 
         </painel>
 

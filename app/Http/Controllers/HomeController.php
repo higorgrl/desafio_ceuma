@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Curso;
+use App\User;
+use App\Aluno;
+
 class HomeController extends Controller
 {
     /**
@@ -26,6 +30,11 @@ class HomeController extends Controller
         $listaMigalhas = json_encode([
             ["titulo"=>"Home", "url"=>""]
         ]);
-        return view('home',compact('listaMigalhas'));
+
+        $totalUsuarios = User::count();
+        $totalCursos = Curso::count();
+        $totalAlunos = Aluno::count();
+
+        return view('home',compact('listaMigalhas','totalUsuarios','totalCursos','totalAlunos'));
     }
 }

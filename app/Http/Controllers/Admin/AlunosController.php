@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Curso;
+use App\Aluno;
 
-class CursosController extends Controller
+class AlunosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +18,12 @@ class CursosController extends Controller
     {
         $listaMigalhas = json_encode([
             ["titulo"=>"Home", "url"=>route('home')],
-            ["titulo"=>"Lista de Cursos", "url"=>""]
+            ["titulo"=>"Lista de Alunos", "url"=>""]
         ]);
 
-        $listaCursos = Curso::select('id','codigo','nome','data_cadastro','carga_horaria')->paginate(2);    
+        $listaModelo = Aluno::select('id','cod_aluno','nome_aluno','nome_curso')->paginate(2);    
 
-        return view('admin.cursos.index',compact('listaMigalhas','listaCursos'));
+        return view('admin.alunos.index',compact('listaMigalhas','listaModelo'));
     }
 
     /**
@@ -46,17 +46,21 @@ class CursosController extends Controller
     {
         $data = $request->all();
         $validacao = \Validator::make($data,[
-            "codigo" => "required",
-            "nome" => "required",
-            "data_cadastro" => "required",
-            "carga_horaria" => "required",
+            "cod_aluno" => "required",
+            "nome_aluno" => "required",
+            "cpf" => "required",
+            "endereco" => "required",
+            "cep" => "required",
+            "email_aluno" => "required",
+            "telefone" => "required",
+            "nome_curso" => "required",
         ]);
 
         if($validacao->fails()){
             return redirect()->back()->withErrors($validacao)->withInput();
         }
 
-        Curso::create($data);
+        Aluno::create($data);
         return redirect()->back();
     }
 
@@ -68,7 +72,7 @@ class CursosController extends Controller
      */
     public function show($id)
     {
-        return Curso::find($id);
+        return Aluno::find($id);
     }
 
     /**
@@ -93,17 +97,21 @@ class CursosController extends Controller
     {
         $data = $request->all();
         $validacao = \Validator::make($data,[
-            "codigo" => "required",
-            "nome" => "required",
-            "data_cadastro" => "required",
-            "carga_horaria" => "required",
+            "cod_aluno" => "required",
+            "nome_aluno" => "required",
+            "cpf" => "required",
+            "endereco" => "required",
+            "cep" => "required",
+            "email_aluno" => "required",
+            "telefone" => "required",
+            "nome_curso" => "required",
         ]);
 
         if($validacao->fails()){
             return redirect()->back()->withErrors($validacao)->withInput();
         }
 
-        Curso::find($id)->update($data);
+        Aluno::find($id)->update($data);
         return redirect()->back();
     }
 
@@ -115,7 +123,7 @@ class CursosController extends Controller
      */
     public function destroy($id)
     {
-        Curso::find($id)->delete();
+        Aluno::find($id)->delete();
         return redirect()->back();
     }
 }
