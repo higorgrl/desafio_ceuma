@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Curso;
+use Illuminate\Support\Facades\DB;
 
 class CursosController extends Controller
 {
@@ -21,9 +22,14 @@ class CursosController extends Controller
             ["titulo"=>"Lista de Cursos", "url"=>""]
         ]);
 
-        $listaCursos = Curso::select('id','codigo','nome','data_cadastro','carga_horaria')->paginate(2);    
+        $listaCursos = Curso::select('id','codigo','nome','data_cadastro','carga_horaria')->paginate(2);
+        
+        $listaModelo = DB::table('cursos')
+                       ->join('alunos','alunos.nome_curso','=','cursos.nome')
+                       ->select('alunos.nome_aluno')
+                       ->paginate(2);
 
-        return view('admin.cursos.index',compact('listaMigalhas','listaCursos'));
+        return view('admin.cursos.index',compact('listaMigalhas','listaCursos','listaModelo'));
     }
 
     /**

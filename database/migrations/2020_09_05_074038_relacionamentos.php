@@ -13,8 +13,8 @@ class Relacionamentos extends Migration
      */
     public function up()
     {
-        Schema::create('cursos', function (Blueprint $table) {
-            $table->integer('aluno_id')->unsigned();
+        Schema::table('cursos', function (Blueprint $table) {
+            $table->integer('aluno_id')->unsigned()->default(1);
             $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
         });
     }
@@ -26,9 +26,9 @@ class Relacionamentos extends Migration
      */
     public function down()
     {
-        Schema::create('cursos', function (Blueprint $table) {
+        Schema::table('cursos', function (Blueprint $table) {
             $table->dropForeign(['aluno_id']);
-            
+            $table->dropColumn('aluno_id');
         });
     }
 }

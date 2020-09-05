@@ -12,4 +12,8 @@ class Aluno extends Model
     protected $fillable = ['cod_aluno','nome_aluno','cpf','endereco','cep','email_aluno','telefone','nome_curso'];
 
     protected $dates = ['deleted_at'];
+
+    public function user(){
+        return $this->belongs('App\Curso');
+    }
 }

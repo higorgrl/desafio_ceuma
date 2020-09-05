@@ -80,6 +80,11 @@
     </modal>
 
     <modal nome="detalhe" titulo="Detalhe">
-        <p>@{{$store.state.item.codigo}}</p>
+        <tabela-lista
+            v-bind:titulos="['Nome']"
+            v-bind:itens="{{json_encode($listaModelo)}}"
+            modal="sim"
+
+        ></tabela-lista>
     </modal>
 @endsection
