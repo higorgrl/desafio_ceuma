@@ -14,7 +14,7 @@ class Relacionamentos extends Migration
     public function up()
     {
         Schema::table('cursos', function (Blueprint $table) {
-            $table->integer('aluno_id')->unsigned()->default(1);
+            $table->unsignedBigInteger('aluno_id')->nullable();
             $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
         });
     }
