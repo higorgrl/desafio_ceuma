@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Aluno;
+use Illuminate\Validation\Rule;
 
 class AlunosController extends Controller
 {
@@ -96,16 +97,31 @@ class AlunosController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $validacao = \Validator::make($data,[
-            'cod_aluno'   => 'required|min:4|max:4|unique:alunos',
-            'nome_aluno'  => 'required|string|max:255',
-            'cpf'         => 'required|min:11|max:11|unique:alunos',
-            'endereco'    => 'required|string|max:255',
-            'cep'         => 'required|min:8|max:8',
-            'email_aluno' => 'required|string|email|max:255|unique:alunos',
-            'telefone'    => 'required|min:9',
-            'nome_curso'  => 'required|string',
-        ]);
+
+        if(isset($data['id']) && $data['id'] != "") {
+            $validacao = \Validator::make($data,[
+                'cod_aluno'   => ['required','min:4','max:4',Rule::unique('alunos')->ignore($id)],
+                'nome_aluno'  => 'required|string|max:255',
+                'cpf'         => ['required','min:11','max:11',Rule::unique('alunos')->ignore($id)],
+                'endereco'    => 'required|string|max:255',
+                'cep'         => 'required|min:8|max:8',
+                'email_aluno' => ['required','string','email','max:255',Rule::unique('alunos')->ignore($id)],
+                'telefone'    => 'required|min:9',
+                'nome_curso'  => 'required|string',
+            ]);
+        }else{
+            $validacao = \Validator::make($data,[
+                'cod_aluno'   => ['required','min:4','max:4',Rule::unique('alunos')->ignore($id)],
+                'nome_aluno'  => 'required|string|max:255',
+                'cpf'         => ['required','min:11','max:11',Rule::unique('alunos')->ignore($id)],
+                'endereco'    => 'required|string|max:255',
+                'cep'         => 'required|min:8|max:8',
+                'email_aluno' => ['required','string','email','max:255',Rule::unique('alunos')->ignore($id)],
+                'telefone'    => 'required|min:9',
+                'nome_curso'  => 'required|string',
+            ]);
+            unset($data['id']);
+        }
 
         if($validacao->fails()){
             return redirect()->back()->withErrors($validacao)->withInput();

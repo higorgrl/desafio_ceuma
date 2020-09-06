@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Curso;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class CursosController extends Controller
 {
@@ -52,10 +53,10 @@ class CursosController extends Controller
     {
         $data = $request->all();
         $validacao = \Validator::make($data,[
-            "codigo" => "required",
-            "nome" => "required",
-            "data_cadastro" => "required",
-            "carga_horaria" => "required",
+            'codigo' => 'required|min:6|max:6|unique:cursos',
+            'nome' => 'required|string|max:255',
+            'data_cadastro' => 'required',
+            'carga_horaria' => 'required|string',
         ]);
 
         if($validacao->fails()){
@@ -98,12 +99,23 @@ class CursosController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $validacao = \Validator::make($data,[
-            'codigo' => 'required|min:4|max:4|unique:alunos',
-            'nome' => 'required|string|max:255',
-            'data_cadastro' => 'required',
-            'carga_horaria' => 'required|string',
-        ]);
+
+        if(isset($data['id']) && $data['id'] != "") {
+            $validacao = \Validator::make($data,[
+                'codigo' => ['required','min:6','max:6',Rule::unique('cursos')->ignore($id)],
+                'nome' => 'required|string|max:255',
+                'data_cadastro' => 'required',
+                'carga_horaria' => 'required|string',
+            ]);
+        }else{
+            $validacao = \Validator::make($data,[
+                'codigo' => ['required','min:6','max:6',Rule::unique('cursos')->ignore($id)],
+                'nome' => 'required|string|max:255',
+                'data_cadastro' => 'required',
+                'carga_horaria' => 'required|string',
+            ]);
+            unset($data['id']);
+        }
 
         if($validacao->fails()){
             return redirect()->back()->withErrors($validacao)->withInput();
