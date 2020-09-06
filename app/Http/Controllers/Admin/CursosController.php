@@ -99,10 +99,10 @@ class CursosController extends Controller
     {
         $data = $request->all();
         $validacao = \Validator::make($data,[
-            "codigo" => "required",
-            "nome" => "required",
-            "data_cadastro" => "required",
-            "carga_horaria" => "required",
+            'codigo' => 'required|min:4|max:4|unique:alunos',
+            'nome' => 'required|string|max:255',
+            'data_cadastro' => 'required',
+            'carga_horaria' => 'required|string',
         ]);
 
         if($validacao->fails()){

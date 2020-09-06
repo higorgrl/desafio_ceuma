@@ -19,5 +19,13 @@ class DatabaseSeeder extends Seeder
             'admin' => 'S',
 			'password' => Hash::make('123456'),
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Servidor',
+            'email' => 'servidor@mail.com',
+            'servidor' => 'S',
+            'admin' => 'N',
+			'password' => Hash::make('123456'),
+        ]);
     }
 }

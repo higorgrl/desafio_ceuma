@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" value="{{old('cpf')}}">
+                <input type="number" class="form-control" id="cpf" name="cpf" value="{{old('cpf')}}">
             </div>
             <div class="form-group">
                 <label for="endereco">Endereço</label>
@@ -59,7 +59,7 @@
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" id="telefone" name="telefone" value="{{old('telefone')}}">
+                <input type="number" class="form-control" id="telefone" name="telefone" value="{{old('telefone')}}">
             </div>
             <div class="form-group">
                 <label for="nome_curso">Curso</label>
@@ -83,7 +83,7 @@
             </div>
             <div class="form-group">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" v-model="$store.state.item.cpf" placeholder="CPF">
+                <input type="number" class="form-control" id="cpf" name="cpf" v-model="$store.state.item.cpf" placeholder="CPF">
             </div>
             <div class="form-group">
                 <label for="endereco">Endereço</label>
@@ -99,7 +99,7 @@
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" id="telefone" name="telefone" v-model="$store.state.item.telefone" placeholder="Telefone">
+                <input type="number" class="form-control" id="telefone" name="telefone" v-model="$store.state.item.telefone" placeholder="Telefone">
             </div>
             <div class="form-group">
                 <label for="nome_curso">Curso</label>

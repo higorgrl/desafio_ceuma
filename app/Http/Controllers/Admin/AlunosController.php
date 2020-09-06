@@ -46,14 +46,14 @@ class AlunosController extends Controller
     {
         $data = $request->all();
         $validacao = \Validator::make($data,[
-            "cod_aluno" => "required",
-            "nome_aluno" => "required",
-            "cpf" => "required",
-            "endereco" => "required",
-            "cep" => "required",
-            "email_aluno" => "required",
-            "telefone" => "required",
-            "nome_curso" => "required",
+            'cod_aluno'   => 'required|min:4|max:4|unique:alunos',
+            'nome_aluno'  => 'required|string|max:255',
+            'cpf'         => 'required|min:11|max:11|unique:alunos',
+            'endereco'    => 'required|string|max:255',
+            'cep'         => 'required|min:8|max:8',
+            'email_aluno' => 'required|string|email|max:255|unique:alunos',
+            'telefone'    => 'required|min:9',
+            'nome_curso'  => 'required|string',
         ]);
 
         if($validacao->fails()){
@@ -97,14 +97,14 @@ class AlunosController extends Controller
     {
         $data = $request->all();
         $validacao = \Validator::make($data,[
-            "cod_aluno" => "required",
-            "nome_aluno" => "required",
-            "cpf" => "required",
-            "endereco" => "required",
-            "cep" => "required",
-            "email_aluno" => "required",
-            "telefone" => "required",
-            "nome_curso" => "required",
+            'cod_aluno'   => 'required|min:4|max:4|unique:alunos',
+            'nome_aluno'  => 'required|string|max:255',
+            'cpf'         => 'required|min:11|max:11|unique:alunos',
+            'endereco'    => 'required|string|max:255',
+            'cep'         => 'required|min:8|max:8',
+            'email_aluno' => 'required|string|email|max:255|unique:alunos',
+            'telefone'    => 'required|min:9',
+            'nome_curso'  => 'required|string',
         ]);
 
         if($validacao->fails()){

@@ -21,7 +21,7 @@ class CreateAlunosTable extends Migration
             $table->string('endereco');
             $table->integer('cep');
             $table->string('email_aluno');
-            $table->string('telefone');
+            $table->integer('telefone');
             $table->string('nome_curso');
             $table->timestamps();
             $table->softDeletes();
