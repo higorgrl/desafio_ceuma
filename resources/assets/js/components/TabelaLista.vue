@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                 <tr v-for="(item, index) in lista" v-bind:key="item.id">
-                    <td v-for="i in item" v-bind:key="i.id">{{i}}</td>
+                    <td v-for="i in item" v-bind:key="i.id">{{i | formataData}}</td>
 
                     <td v-if="detalhe || editar || deletar">
                         
@@ -71,6 +71,17 @@
         methods:{
             executaForm: function(index){
                 document.getElementById(index).submit();
+            }
+        },
+        filters:{
+            formataData: function(value){
+                if(!value) return '';
+                value = value.toString();
+                if(value.split('-').length == 3){
+                    value = value.split('-');
+                    return value[2] + '/' + value[1] + '/' + value[0];
+                }
+                return value;
             }
         },
         computed:{

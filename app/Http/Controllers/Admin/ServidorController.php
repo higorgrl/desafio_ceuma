@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Aluno;
+use App\User;
+use Illuminate\Validation\Rule;
 
-class AlunosController extends Controller
+class ServidorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +19,12 @@ class AlunosController extends Controller
     {
         $listaMigalhas = json_encode([
             ["titulo"=>"Admin", "url"=>route('admin')],
-            ["titulo"=>"Lista de Alunos", "url"=>""]
+            ["titulo"=>"Lista de Servidores", "url"=>""]
         ]);
 
-        $listaModelo = Aluno::select('id','cod_aluno','nome_aluno','nome_curso')->paginate(10);    
+        $listaModelo = User::select('id','name','email')->where('servidor','=','S')->paginate(10);    
 
-        return view('admin.alunos.index',compact('listaMigalhas','listaModelo'));
+        return view('admin.servidor.index',compact('listaMigalhas','listaModelo'));
     }
 
     /**
@@ -46,21 +47,18 @@ class AlunosController extends Controller
     {
         $data = $request->all();
         $validacao = \Validator::make($data,[
-            "cod_aluno" => "required",
-            "nome_aluno" => "required",
-            "cpf" => "required",
-            "endereco" => "required",
-            "cep" => "required",
-            "email_aluno" => "required",
-            "telefone" => "required",
-            "nome_curso" => "required",
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
         ]);
 
         if($validacao->fails()){
             return redirect()->back()->withErrors($validacao)->withInput();
         }
 
-        Aluno::create($data);
+        $data['password'] = bcrypt($data['password']);
+
+        User::create($data);
         return redirect()->back();
     }
 
@@ -72,7 +70,7 @@ class AlunosController extends Controller
      */
     public function show($id)
     {
-        return Aluno::find($id);
+        return User::find($id);
     }
 
     /**
@@ -96,22 +94,27 @@ class AlunosController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $validacao = \Validator::make($data,[
-            "cod_aluno" => "required",
-            "nome_aluno" => "required",
-            "cpf" => "required",
-            "endereco" => "required",
-            "cep" => "required",
-            "email_aluno" => "required",
-            "telefone" => "required",
-            "nome_curso" => "required",
-        ]);
+
+        if(isset($data['password']) && $data['password'] != "") {
+            $validacao = \Validator::make($data,[
+                'name' => 'required|string|max:255',
+                'email' => ['required','string','email','max:255',Rule::unique('users')->ignore($id)],
+                'password' => 'required|string|min:6',
+            ]);
+            $data['password'] = bcrypt($data['password']);
+        }else{
+            $validacao = \Validator::make($data,[
+                'name' => 'required|string|max:255',
+                'email' => ['required','string','email','max:255',Rule::unique('users')->ignore($id)]
+            ]);
+            unset($data['password']);
+        }
 
         if($validacao->fails()){
             return redirect()->back()->withErrors($validacao)->withInput();
         }
 
-        Aluno::find($id)->update($data);
+        User::find($id)->update($data);
         return redirect()->back();
     }
 
@@ -123,7 +126,7 @@ class AlunosController extends Controller
      */
     public function destroy($id)
     {
-        Aluno::find($id)->delete();
+        User::find($id)->delete();
         return redirect()->back();
     }
 }

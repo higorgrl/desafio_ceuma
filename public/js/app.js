@@ -46980,7 +46980,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n.bg-aqua{\n    background-color: #00c0ef !important;\n}\n.small-box {\n  border-radius: 2px;\n  position: relative;\n  display: block;\n  margin-bottom: 20px;\n  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);\n          box-shadow: 0 1px 1px rgba(0,0,0,0.1);\n  color: #FFF;\n}\n.small-box:hover {\n  text-decoration: none;\n  color: #f9f9f9;\n}\n.small-box>.inner {\n  padding: 10px;\n}\n.small-box h3, .small-box p {\n  z-index: 5;\n}\n.small-box h3 {\n  font-size: 38px;\n  font-weight: bold;\n  margin: 0 0 10px 0;\n  white-space: nowrap;\n  padding: 0;\n}\n.small-box p {\n  font-size: 15px;\n}\np {\n  margin: 0 0 10px;\n}\n.small-box .icon {\n  -webkit-transition: all .3s linear;\n  transition: all .3s linear;\n  position: absolute;\n  top: -10px;\n  right: 10px;\n  z-index: 0;\n  font-size: 90px;\n  color: rgba(0,0,0,0.15);\n}\n.small-box:hover .icon {\n  font-size: 95px;\n}\n.small-box>.small-box-footer {\n  position: relative;\n  text-align: center;\n  padding: 3px 0;\n  color: #fff;\n  color: rgba(255,255,255,0.8);\n  display: block;\n  z-index: 10;\n  background: rgba(0,0,0,0.1);\n  text-decoration: none;\n}\na {\n  color: #3c8dbc;\n}\n.small-box>.small-box-footer:hover {\n  color: #fff;\n  background: rgba(0,0,0,0.15);\n}\na:hover, a:active, a:focus {\n  outline: none;\n  text-decoration: none;\n  color: #72afd2;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.bg-aqua{\n    background-color: #00c0ef !important;\n}\n.small-box {\n    border-radius: 2px;\n    position: relative;\n    display: block;\n    margin-bottom: 20px;\n    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);\n            box-shadow: 0 1px 1px rgba(0,0,0,0.1);\n    color: #FFF;\n}\n.small-box:hover {\n    text-decoration: none;\n    color: #f9f9f9;\n}\n.small-box>.inner {\n    padding: 10px;\n}\n.small-box h3, .small-box p {\n    z-index: 5;\n}\n.small-box h3 {\n    font-size: 38px;\n    font-weight: bold;\n    margin: 0 0 10px 0;\n    white-space: nowrap;\n    padding: 0;\n}\n.small-box p {\n    font-size: 15px;\n}\np {\n    margin: 0 0 10px;\n}\n.small-box .icon {\n    -webkit-transition: all .3s linear;\n    transition: all .3s linear;\n    position: absolute;\n    top: -10px;\n    right: 10px;\n    z-index: 0;\n    font-size: 90px;\n    color: rgba(0,0,0,0.15);\n}\n.small-box:hover .icon {\n    font-size: 95px;\n}\n.small-box>.small-box-footer {\n    position: relative;\n    text-align: center;\n    padding: 3px 0;\n    color: #fff;\n    color: rgba(255,255,255,0.8);\n    display: block;\n    z-index: 10;\n    background: rgba(0,0,0,0.1);\n    text-decoration: none;\n}\na {\n    color: #3c8dbc;\n}\n.small-box>.small-box-footer:hover {\n    color: #fff;\n    background: rgba(0,0,0,0.15);\n}\na:hover, a:active, a:focus {\n    outline: none;\n    text-decoration: none;\n    color: #72afd2;\n}\n", ""]);
 
 // exports
 
@@ -47009,12 +47009,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['quantidade', 'titulo', 'url', 'cor', 'icone'],
-  computed: {
-    defineCor: function defineCor() {
-      return "background-color: " + this.cor + " !important;";
+    props: ['quantidade', 'titulo', 'url', 'cor', 'icone'],
+    computed: {
+        defineCor: function defineCor() {
+            return "background-color: " + this.cor + " !important;";
+        }
     }
-  }
 
 });
 
@@ -47036,7 +47036,7 @@ var render = function() {
     _c("div", { staticClass: "icon" }, [_c("i", { class: _vm.icone })]),
     _vm._v(" "),
     _c("a", { staticClass: "small-box-footer", attrs: { href: _vm.url } }, [
-      _vm._v("\n    Ver mais "),
+      _vm._v("\n        Ver mais "),
       _c("i", { staticClass: "fa fa-arrow-circle-right" })
     ])
   ])
@@ -47116,22 +47116,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['tamanho'],
-  computed: {
-    defineTamanho: function defineTamanho() {
-      if (this.tamanho >= 12) {
-        return "col-md-12";
-      }
-      if (this.tamanho <= 2) {
-        return "col-md-2 col-md-offset-5";
-      }
-      if (this.tamanho % 2 == 0) {
-        return "col-md-" + this.tamanho + " col-md-offset-" + (12 - this.tamanho) / 2;
-      } else {
-        return "col-md-" + (parseInt(this.tamanho) + 1) + " col-md-offset-" + (12 - (parseInt(this.tamanho) + 1)) / 2;
-      }
+    props: ['tamanho'],
+    computed: {
+        defineTamanho: function defineTamanho() {
+            if (this.tamanho >= 12) {
+                return "col-md-12";
+            }
+            if (this.tamanho <= 2) {
+                return "col-md-2 col-md-offset-5";
+            }
+            if (this.tamanho % 2 == 0) {
+                return "col-md-" + this.tamanho + " col-md-offset-" + (12 - this.tamanho) / 2;
+            } else {
+                return "col-md-" + (parseInt(this.tamanho) + 1) + " col-md-offset-" + (12 - (parseInt(this.tamanho) + 1)) / 2;
+            }
+        }
     }
-  }
 });
 
 /***/ }),
@@ -47286,6 +47286,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             document.getElementById(index).submit();
         }
     },
+    filters: {
+        formataData: function formataData(value) {
+            if (!value) return '';
+            value = value.toString();
+            if (value.split('-').length == 3) {
+                value = value.split('-');
+                return value[2] + '/' + value[1] + '/' + value[0];
+            }
+            return value;
+        }
+    },
     computed: {
         lista: function lista() {
             var _this = this;
@@ -47388,7 +47399,9 @@ var render = function() {
             { key: item.id },
             [
               _vm._l(item, function(i) {
-                return _c("td", { key: i.id }, [_vm._v(_vm._s(i))])
+                return _c("td", { key: i.id }, [
+                  _vm._v(_vm._s(_vm._f("formataData")(i)))
+                ])
               }),
               _vm._v(" "),
               _vm.detalhe || _vm.editar || _vm.deletar
@@ -47787,41 +47800,45 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "modal fade",
+      staticClass: "modal fade bs-example-modal-lg",
       attrs: { id: _vm.nome, tabindex: "-1", role: "dialog" }
     },
     [
-      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-header" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("h4", { staticClass: "modal-title" }, [
-              _vm._v(_vm._s(_vm.titulo))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [_vm._t("default")], 2),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "modal-footer" },
-            [
-              _vm._t("botoes"),
+      _c(
+        "div",
+        { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+        [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _vm._m(0),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("Close")]
-              )
-            ],
-            2
-          )
-        ])
-      ])
+              _c("h4", { staticClass: "modal-title" }, [
+                _vm._v(_vm._s(_vm.titulo))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [_vm._t("default")], 2),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "modal-footer" },
+              [
+                _vm._t("botoes"),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                )
+              ],
+              2
+            )
+          ])
+        ]
+      )
     ]
   )
 }

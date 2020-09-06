@@ -12,18 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('site');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index')->name('admin')->middleware('can:servidor');
 
 Route::middleware(['auth'])->prefix('admin')->namespace('Admin')->group(function() {
     
-    Route::resource('cursos', 'CursosController');
-    Route::resource('usuarios', 'UsuariosController');
-    Route::resource('alunos', 'AlunosController');
+    Route::resource('cursos', 'CursosController')->middleware('can:administrador')->middleware('can:servidor');
+    Route::resource('usuarios', 'UsuariosController')->middleware('can:administrador');
+    Route::resource('alunos', 'AlunosController')->middleware('can:administrador')->middleware('can:servidor');
+    Route::resource('servidores', 'ServidorController')->middleware('can:administrador');
+    Route::resource('adm', 'AdminController')->middleware('can:administrador');
 
 });
 

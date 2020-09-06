@@ -18,16 +18,16 @@ class CursosController extends Controller
     public function index()
     {
         $listaMigalhas = json_encode([
-            ["titulo"=>"Home", "url"=>route('home')],
+            ["titulo"=>"Admin", "url"=>route('admin')],
             ["titulo"=>"Lista de Cursos", "url"=>""]
         ]);
 
-        $listaCursos = Curso::select('id','codigo','nome','data_cadastro','carga_horaria')->paginate(2);
+        $listaCursos = Curso::select('id','codigo','nome','data_cadastro','carga_horaria')->paginate(10);
         
         $listaModelo = DB::table('cursos')
                        ->join('alunos','alunos.nome_curso','=','cursos.nome')
                        ->select('alunos.nome_aluno')
-                       ->paginate(2);
+                       ->paginate(10);
 
         return view('admin.cursos.index',compact('listaMigalhas','listaCursos','listaModelo'));
     }

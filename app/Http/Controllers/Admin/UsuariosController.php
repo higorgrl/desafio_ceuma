@@ -18,11 +18,11 @@ class UsuariosController extends Controller
     public function index()
     {
         $listaMigalhas = json_encode([
-            ["titulo"=>"Home", "url"=>route('home')],
+            ["titulo"=>"Admin", "url"=>route('admin')],
             ["titulo"=>"Lista de Usuários", "url"=>""]
         ]);
 
-        $listaModelo = User::select('id','name','email')->paginate(2);    
+        $listaModelo = User::select('id','name','email','servidor','admin')->paginate(10);    
 
         return view('admin.usuarios.index',compact('listaMigalhas','listaModelo'));
     }

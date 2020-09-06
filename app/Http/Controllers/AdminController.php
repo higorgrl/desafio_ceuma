@@ -8,7 +8,7 @@ use App\Curso;
 use App\User;
 use App\Aluno;
 
-class HomeController extends Controller
+class AdminController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,13 +28,15 @@ class HomeController extends Controller
     public function index()
     {
         $listaMigalhas = json_encode([
-            ["titulo"=>"Home", "url"=>""]
+            ["titulo"=>"Admin", "url"=>""]
         ]);
 
         $totalUsuarios = User::count();
         $totalCursos = Curso::count();
         $totalAlunos = Aluno::count();
+        $totalServidores = User::where('servidor','=','S')->count();
+        $totalAdmin = User::where('admin','=','S')->count();
 
-        return view('home',compact('listaMigalhas','totalUsuarios','totalCursos','totalAlunos'));
+        return view('admin',compact('listaMigalhas','totalUsuarios','totalCursos','totalAlunos','totalServidores','totalAdmin'));
     }
 }
