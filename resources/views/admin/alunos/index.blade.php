@@ -33,37 +33,44 @@
 
     <modal nome="adicionar" titulo="Adicionar">
         <formulario id="formAdicionar" css="" action="{{route('alunos.store')}}" method="post" enctype="" token="{{ csrf_token() }}">
-            <div class="form-group">
-                <label for="cod_aluno">Código</label>
-                <input type="number" class="form-control" id="cod_aluno" name="cod_aluno" placeholder="Código do Aluno" value="{{old('cod_aluno')}}">
-            </div>
-            <div class="form-group">
-                <label for="nome_aluno">Nome</label>
-                <input type="text" class="form-control" id="nome_aluno" name="nome_aluno" placeholder="Nome do Aluno" value="{{old('nome_aluno')}}">
-            </div>
-            <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="number" class="form-control" id="cpf" name="cpf" value="{{old('cpf')}}">
-            </div>
-            <div class="form-group">
-                <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Digite o endereço" value="{{old('endereco')}}">
-            </div>
-            <div class="form-group">
-                <label for="cep">CEP</label>
-                <input type="number" class="form-control" id="cep" name="cep" value="{{old('cep')}}">
-            </div>
-            <div class="form-group">
-                <label for="email_aluno">E-mail</label>
-                <input type="text" class="form-control" id="email_aluno" name="email_aluno" placeholder="E-mail" value="{{old('email_aluno')}}">
-            </div>
-            <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="number" class="form-control" id="telefone" name="telefone" value="{{old('telefone')}}">
-            </div>
-            <div class="form-group">
-                <label for="nome_curso">Curso</label>
-                <input type="text" class="form-control" id="nome_curso" name="nome_curso" placeholder="Curso" value="{{old('nome_curso')}}">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="cod_aluno">Código</label>
+                    <input type="number" class="form-control" id="cod_aluno" name="cod_aluno" placeholder="Código do Aluno" value="{{old('cod_aluno')}}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cpf">CPF</label>
+                    <input type="number" class="form-control" id="cpf" name="cpf" value="{{old('cpf')}}">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="nome_aluno">Nome</label>
+                    <input type="text" class="form-control" id="nome_aluno" name="nome_aluno" placeholder="Nome do Aluno" value="{{old('nome_aluno')}}">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Digite o endereço" value="{{old('endereco')}}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cep">CEP</label>
+                    <input type="number" class="form-control" id="cep" name="cep" value="{{old('cep')}}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="telefone">Telefone</label>
+                    <input type="number" class="form-control" id="telefone" name="telefone" value="{{old('telefone')}}">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="email_aluno">E-mail</label>
+                    <input type="text" class="form-control" id="email_aluno" name="email_aluno" placeholder="E-mail" value="{{old('email_aluno')}}">
+                </div>
+                {{-- <div class="form-group col-md-12">
+                    <label for="id">Curso</label>
+                    <script>console.log({{json_encode($listaCursos)}})</script>
+                    <select class="form-control" name="id" id="id">
+                        @foreach ($listaCursos as $curso)
+                            <option value="{{$curso->id}}">{{$curso->nome}}</option>
+                        @endforeach
+                    </select>
+                </div> --}}
             </div>
         </formulario>
         <span slot="botoes">
@@ -73,37 +80,39 @@
 
     <modal nome="editar" titulo="Editar">
         <formulario id="formEditar" css="" v-bind:action="'/admin/alunos/'+ $store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
-            <div class="form-group">
-                <label for="cod_aluno">Código</label>
-                <input type="number" class="form-control" id="cod_aluno" name="cod_aluno" v-model="$store.state.item.cod_aluno" placeholder="Código">
-            </div>
-            <div class="form-group">
-                <label for="nome_aluno">Nome</label>
-                <input type="text" class="form-control" id="nome_aluno" name="nome_aluno" v-model="$store.state.item.nome_aluno" placeholder="Nome">
-            </div>
-            <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="number" class="form-control" id="cpf" name="cpf" v-model="$store.state.item.cpf" placeholder="CPF">
-            </div>
-            <div class="form-group">
-                <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco" v-model="$store.state.item.endereco" placeholder="Endereço">
-            </div>
-            <div class="form-group">
-                <label for="cep">CEP</label>
-                <input type="number" class="form-control" id="cep" name="cep" v-model="$store.state.item.cep" placeholder="CEP">
-            </div>
-            <div class="form-group">
-                <label for="email_aluno">E-mail</label>
-                <input type="text" class="form-control" id="email_aluno" name="email_aluno" v-model="$store.state.item.email_aluno" placeholder="E-mail">
-            </div>
-            <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="number" class="form-control" id="telefone" name="telefone" v-model="$store.state.item.telefone" placeholder="Telefone">
-            </div>
-            <div class="form-group">
-                <label for="nome_curso">Curso</label>
-                <input type="text" class="form-control" id="nome_curso" name="nome_curso" v-model="$store.state.item.nome_curso" placeholder="Curso">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="cod_aluno">Código</label>
+                    <input type="number" class="form-control" id="cod_aluno" name="cod_aluno" v-model="$store.state.item.cod_aluno" placeholder="Código">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cpf">CPF</label>
+                    <input type="number" class="form-control" id="cpf" name="cpf" v-model="$store.state.item.cpf" placeholder="CPF">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="nome_aluno">Nome</label>
+                    <input type="text" class="form-control" id="nome_aluno" name="nome_aluno" v-model="$store.state.item.nome_aluno" placeholder="Nome">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco" v-model="$store.state.item.endereco" placeholder="Endereço">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cep">CEP</label>
+                    <input type="number" class="form-control" id="cep" name="cep" v-model="$store.state.item.cep" placeholder="CEP">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="telefone">Telefone</label>
+                    <input type="number" class="form-control" id="telefone" name="telefone" v-model="$store.state.item.telefone" placeholder="Telefone">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="email_aluno">E-mail</label>
+                    <input type="text" class="form-control" id="email_aluno" name="email_aluno" v-model="$store.state.item.email_aluno" placeholder="E-mail">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="nome_curso">Curso</label>
+                    <input type="text" class="form-control" id="nome_curso" name="nome_curso" v-model="$store.state.item.nome_curso" placeholder="Curso">
+                </div>
             </div>
         </formulario>
         <span slot="botoes">
@@ -111,7 +120,14 @@
         </span>
     </modal>
 
-    <modal nome="detalhe" v:bind:titulo="$store.state.item.name">
-        <p>@{{$store.state.item.email}}</p>
+    <modal nome="detalhe" titulo="Dados do Aluno">
+        <p><strong>Código: </strong>@{{$store.state.item.cod_aluno}}</p>
+        <p><strong>Nome: </strong>@{{$store.state.item.nome_aluno}}</p>
+        <p><strong>CPF: </strong>@{{$store.state.item.cpf}}</p>
+        <p><strong>Endereço: </strong>@{{$store.state.item.endereco}}</p>
+        <p><strong>CEP: </strong>@{{$store.state.item.cep}}</p>
+        <p><strong>E-mail: </strong>@{{$store.state.item.email_aluno}}</p>
+        <p><strong>Telefone: </strong>@{{$store.state.item.telefone}}</p>
+        <p><strong>Curso: </strong>@{{$store.state.item.nome_curso}}</p>
     </modal>
 @endsection

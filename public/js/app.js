@@ -47339,10 +47339,10 @@ var render = function() {
         _vm.criar && _vm.modal
           ? _c("modallink", {
               attrs: {
-                tipo: "link",
+                tipo: "button",
                 nome: "adicionar",
                 titulo: "Criar",
-                css: ""
+                css: "btn btn-primary"
               }
             })
           : _vm._e(),
@@ -47441,10 +47441,10 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.detalhe,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "detalhe",
-                                    titulo: " Detalhe |",
-                                    css: ""
+                                    titulo: "Detalhe",
+                                    css: "btn btn-primary"
                                   }
                                 })
                               : _vm._e(),
@@ -47460,10 +47460,10 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.editar,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "editar",
-                                    titulo: " Editar |",
-                                    css: ""
+                                    titulo: " Editar",
+                                    css: "btn btn-warning"
                                   }
                                 })
                               : _vm._e(),
@@ -47471,6 +47471,7 @@ var render = function() {
                             _c(
                               "a",
                               {
+                                staticClass: "btn btn-danger",
                                 attrs: { href: "#" },
                                 on: {
                                   click: function($event) {
@@ -47500,10 +47501,10 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.detalhe,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "detalhe",
-                                    titulo: " Detalhe |",
-                                    css: ""
+                                    titulo: " Detalhe",
+                                    css: "btn btn-primary"
                                   }
                                 })
                               : _vm._e(),
@@ -47519,18 +47520,23 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.editar,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "editar",
-                                    titulo: " Editar |",
-                                    css: ""
+                                    titulo: " Editar",
+                                    css: "btn btn-warning"
                                   }
                                 })
                               : _vm._e(),
                             _vm._v(" "),
                             _vm.deletar
-                              ? _c("a", { attrs: { href: _vm.deletar } }, [
-                                  _vm._v("Deletar")
-                                ])
+                              ? _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-danger",
+                                    attrs: { href: _vm.deletar }
+                                  },
+                                  [_vm._v("Deletar")]
+                                )
                               : _vm._e()
                           ],
                           1
@@ -47552,10 +47558,10 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.detalhe,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "detalhe",
-                                    titulo: " Detalhe |",
-                                    css: ""
+                                    titulo: " Detalhe",
+                                    css: "btn btn-primary"
                                   }
                                 })
                               : _vm._e(),
@@ -47571,10 +47577,10 @@ var render = function() {
                                   attrs: {
                                     item: item,
                                     url: _vm.editar,
-                                    tipo: "link",
+                                    tipo: "button",
                                     nome: "editar",
                                     titulo: "Editar",
-                                    css: ""
+                                    css: "btn btn-warning"
                                   }
                                 })
                               : _vm._e()
@@ -47800,45 +47806,41 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "modal fade bs-example-modal-lg",
+      staticClass: "modal fade col-md-12",
       attrs: { id: _vm.nome, tabindex: "-1", role: "dialog" }
     },
     [
-      _c(
-        "div",
-        { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
-        [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _vm._m(0),
+      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _c("div", { staticClass: "modal-header" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("h4", { staticClass: "modal-title" }, [
+              _vm._v(_vm._s(_vm.titulo))
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [_vm._t("default")], 2),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal-footer" },
+            [
+              _vm._t("botoes"),
               _vm._v(" "),
-              _c("h4", { staticClass: "modal-title" }, [
-                _vm._v(_vm._s(_vm.titulo))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [_vm._t("default")], 2),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-footer" },
-              [
-                _vm._t("botoes"),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Close")]
-                )
-              ],
-              2
-            )
-          ])
-        ]
-      )
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("Close")]
+              )
+            ],
+            2
+          )
+        ])
+      ])
     ]
   )
 }

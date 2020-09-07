@@ -23,6 +23,8 @@ class CreateAlunosTable extends Migration
             $table->string('email_aluno');
             $table->integer('telefone');
             $table->string('nome_curso');
+            $table->integer('curso_id')->unsigned();
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

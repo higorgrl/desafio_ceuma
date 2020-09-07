@@ -25,8 +25,8 @@ class CursosController extends Controller
 
         $listaCursos = Curso::select('id','codigo','nome','data_cadastro','carga_horaria')->paginate(10);
         
-        $listaModelo = DB::table('cursos')
-                       ->join('alunos','alunos.nome_curso','=','cursos.nome')
+        $listaModelo = DB::table('alunos')
+                       ->join('cursos','cursos.id','=','alunos.curso_id')
                        ->select('alunos.nome_aluno')
                        ->paginate(10);
 

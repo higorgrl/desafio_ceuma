@@ -13,7 +13,8 @@ class Curso extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function aluno(){
+    public function alunos()
+    {
         return $this->hasMany('App\Aluno');
     }
 }

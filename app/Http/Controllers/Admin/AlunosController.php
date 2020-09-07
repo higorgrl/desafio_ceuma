@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Aluno;
+use App\Curso;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class AlunosController extends Controller
@@ -22,9 +24,13 @@ class AlunosController extends Controller
             ["titulo"=>"Lista de Alunos", "url"=>""]
         ]);
 
-        $listaModelo = Aluno::select('id','cod_aluno','nome_aluno','nome_curso')->paginate(10);    
+        $listaModelo = Aluno::select('id','cod_aluno','nome_aluno','nome_curso')->paginate(10);
 
-        return view('admin.alunos.index',compact('listaMigalhas','listaModelo'));
+        $listaCursos = Curso::select('id','codigo','nome','data_cadastro','carga_horaria');   
+
+        //$listaCursos = DB::table('cursos')->select('');
+
+        return view('admin.alunos.index',compact('listaMigalhas','listaModelo','listaCursos'));
     }
 
     /**
