@@ -62,15 +62,14 @@
                     <label for="email_aluno">E-mail</label>
                     <input type="text" class="form-control" id="email_aluno" name="email_aluno" placeholder="E-mail" value="{{old('email_aluno')}}">
                 </div>
-                {{-- <div class="form-group col-md-12">
-                    <label for="id">Curso</label>
-                    <script>console.log({{json_encode($listaCursos)}})</script>
-                    <select class="form-control" name="id" id="id">
+                <div class="form-group col-md-12">
+                    <label for="curso_id">Curso</label>
+                    <select class="form-control" name="curso_id" id="curso_id">
                         @foreach ($listaCursos as $curso)
                             <option value="{{$curso->id}}">{{$curso->nome}}</option>
                         @endforeach
                     </select>
-                </div> --}}
+                </div>
             </div>
         </formulario>
         <span slot="botoes">
@@ -110,8 +109,12 @@
                     <input type="text" class="form-control" id="email_aluno" name="email_aluno" v-model="$store.state.item.email_aluno" placeholder="E-mail">
                 </div>
                 <div class="form-group col-md-12">
-                    <label for="nome_curso">Curso</label>
-                    <input type="text" class="form-control" id="nome_curso" name="nome_curso" v-model="$store.state.item.nome_curso" placeholder="Curso">
+                    <label for="curso_id">Curso</label>
+                    <select class="form-control" id="curso_id" name="curso_id" v-model="$store.state.item.curso_id">
+                        @foreach ($listaCursos as $curso)
+                            <option value="{{$curso->id}}">{{$curso->nome}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </formulario>

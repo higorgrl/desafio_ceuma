@@ -24,11 +24,14 @@ class AlunosController extends Controller
             ["titulo"=>"Lista de Alunos", "url"=>""]
         ]);
 
-        $listaModelo = Aluno::select('id','cod_aluno','nome_aluno','nome_curso')->paginate(10);
+        //$listaModelo = Aluno::select('id','cod_aluno','nome_aluno','curso_id')->paginate(10);
 
-        $listaCursos = Curso::select('id','codigo','nome','data_cadastro','carga_horaria');   
+        $listaModelo = DB::table('alunos')
+                       ->join('cursos','cursos.id','=','alunos.curso_id')
+                       ->select('alunos.id','alunos.cod_aluno','alunos.nome_aluno','cursos.nome')
+                       ->paginate(10);
 
-        //$listaCursos = DB::table('cursos')->select('');
+        $listaCursos = DB::table('cursos')->select('id','codigo','nome','data_cadastro','carga_horaria')->get();
 
         return view('admin.alunos.index',compact('listaMigalhas','listaModelo','listaCursos'));
     }
@@ -60,7 +63,6 @@ class AlunosController extends Controller
             'cep'         => 'required|min:8|max:8',
             'email_aluno' => 'required|string|email|max:255|unique:alunos',
             'telefone'    => 'required|min:9',
-            'nome_curso'  => 'required|string',
         ]);
 
         if($validacao->fails()){
@@ -113,7 +115,6 @@ class AlunosController extends Controller
                 'cep'         => 'required|min:8|max:8',
                 'email_aluno' => ['required','string','email','max:255',Rule::unique('alunos')->ignore($id)],
                 'telefone'    => 'required|min:9',
-                'nome_curso'  => 'required|string',
             ]);
         }else{
             $validacao = \Validator::make($data,[
@@ -124,7 +125,6 @@ class AlunosController extends Controller
                 'cep'         => 'required|min:8|max:8',
                 'email_aluno' => ['required','string','email','max:255',Rule::unique('alunos')->ignore($id)],
                 'telefone'    => 'required|min:9',
-                'nome_curso'  => 'required|string',
             ]);
             unset($data['id']);
         }
