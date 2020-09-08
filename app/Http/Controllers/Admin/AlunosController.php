@@ -63,6 +63,7 @@ class AlunosController extends Controller
             'cep'         => 'required|min:8|max:8',
             'email_aluno' => 'required|string|email|max:255|unique:alunos',
             'telefone'    => 'required|min:9',
+            'curso_id'    => 'required',
         ]);
 
         if($validacao->fails()){
@@ -115,6 +116,7 @@ class AlunosController extends Controller
                 'cep'         => 'required|min:8|max:8',
                 'email_aluno' => ['required','string','email','max:255',Rule::unique('alunos')->ignore($id)],
                 'telefone'    => 'required|min:9',
+                'curso_id'    => 'required',
             ]);
         }else{
             $validacao = \Validator::make($data,[
@@ -125,6 +127,7 @@ class AlunosController extends Controller
                 'cep'         => 'required|min:8|max:8',
                 'email_aluno' => ['required','string','email','max:255',Rule::unique('alunos')->ignore($id)],
                 'telefone'    => 'required|min:9',
+                'curso_id'    => 'required',
             ]);
             unset($data['id']);
         }
@@ -145,7 +148,7 @@ class AlunosController extends Controller
      */
     public function destroy($id)
     {
-        Aluno::find($id)->delete();
+        Aluno::find($id)->forceDelete();
         return redirect()->back();
     }
 }

@@ -16,7 +16,7 @@
 <body>
     <div id="app" style="display:none">
 
-        <topo titulo="{{ config('app.name', 'Laravel') }}" url="{{ url('/') }}">
+        <topo titulo="{{ config('app.name', 'Laravel') }}" url="{{ url('/admin') }}">
         
                 <!-- Authentication Links -->
                 @guest

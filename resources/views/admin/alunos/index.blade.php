@@ -65,6 +65,7 @@
                 <div class="form-group col-md-12">
                     <label for="curso_id">Curso</label>
                     <select class="form-control" name="curso_id" id="curso_id">
+                            <option></option>
                         @foreach ($listaCursos as $curso)
                             <option value="{{$curso->id}}">{{$curso->nome}}</option>
                         @endforeach
@@ -124,13 +125,43 @@
     </modal>
 
     <modal nome="detalhe" titulo="Dados do Aluno">
-        <p><strong>Código: </strong>@{{$store.state.item.cod_aluno}}</p>
-        <p><strong>Nome: </strong>@{{$store.state.item.nome_aluno}}</p>
-        <p><strong>CPF: </strong>@{{$store.state.item.cpf}}</p>
-        <p><strong>Endereço: </strong>@{{$store.state.item.endereco}}</p>
-        <p><strong>CEP: </strong>@{{$store.state.item.cep}}</p>
-        <p><strong>E-mail: </strong>@{{$store.state.item.email_aluno}}</p>
-        <p><strong>Telefone: </strong>@{{$store.state.item.telefone}}</p>
-        <p><strong>Curso: </strong>@{{$store.state.item.nome_curso}}</p>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="cod_aluno">Código</label>
+                <input type="number" class="form-control" id="cod_aluno" name="cod_aluno" v-model="$store.state.item.cod_aluno" disabled>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cpf">CPF</label>
+                <input type="number" class="form-control" id="cpf" name="cpf" v-model="$store.state.item.cpf" disabled>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="nome_aluno">Nome</label>
+                <input type="text" class="form-control" id="nome_aluno" name="nome_aluno" v-model="$store.state.item.nome_aluno" disabled>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="endereco">Endereço</label>
+                <input type="text" class="form-control" id="endereco" name="endereco" v-model="$store.state.item.endereco" disabled>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cep">CEP</label>
+                <input type="number" class="form-control" id="cep" name="cep" v-model="$store.state.item.cep" disabled>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="telefone">Telefone</label>
+                <input type="number" class="form-control" id="telefone" name="telefone" v-model="$store.state.item.telefone" disabled>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="email_aluno">E-mail</label>
+                <input type="text" class="form-control" id="email_aluno" name="email_aluno" v-model="$store.state.item.email_aluno" disabled>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="curso_id">Curso</label>
+                <select class="form-control" id="curso_id" name="curso_id" v-model="$store.state.item.curso_id" disabled>
+                    @foreach ($listaCursos as $curso)
+                        <option value="{{$curso->id}}">{{$curso->nome}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
     </modal>
 @endsection

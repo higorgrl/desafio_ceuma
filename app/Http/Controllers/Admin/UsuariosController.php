@@ -126,7 +126,7 @@ class UsuariosController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        User::find($id)->forceDelete();
         return redirect()->back();
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Curso;
+use App\Aluno;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
@@ -24,11 +25,16 @@ class CursosController extends Controller
         ]);
 
         $listaCursos = Curso::select('id','codigo','nome','data_cadastro','carga_horaria')->paginate(10);
+
+        $listaModelo = Aluno::select('id','cod_aluno','nome_aluno','curso_id')->paginate(10);
         
-        $listaModelo = DB::table('alunos')
-                       ->join('cursos','cursos.id','=','alunos.curso_id')
-                       ->select('alunos.nome_aluno')
-                       ->paginate(10);
+        //necessária revisão
+        
+        //dd($listaModelo);
+        // foreach ($listaModelo as $key => $value) {
+        //     $value->curso_id = $value->alunos->nome_aluno;
+        //     unset($value->alunos);
+        // }
 
         return view('admin.cursos.index',compact('listaMigalhas','listaCursos','listaModelo'));
     }
@@ -133,7 +139,7 @@ class CursosController extends Controller
      */
     public function destroy($id)
     {
-        Curso::find($id)->delete();
+        Curso::find($id)->forceDelete();
         return redirect()->back();
     }
 }

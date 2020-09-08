@@ -116,6 +116,22 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'cod_aluno'     => '[ Código ]',
+        'nome_aluno'    => '[ Nome ]',
+        'cpf'           => '[ CPF ]',
+        'endereco'      => '[ Endereço ]',
+        'cep'           => '[ CEP ]',
+        'email_aluno'   => '[ E-mail ]',
+        'telefone'      => '[ Telefone ]',
+        'curso_id'      => '[ Curso ]',
+        'codigo'        => '[ Código do Curso ]',
+        'nome'          => '[ Nome ]',
+        'data_cadastro' => '[ Data de Cadastro ]',
+        'carga_horaria' => '[ Carga Horária ]',
+        'name'          => '[ Nome ]',
+        'email'         => '[ E-mail ]',
+        'password'      => '[ Senha ]',
+    ],
 
 ];
