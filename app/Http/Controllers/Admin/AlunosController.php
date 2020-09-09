@@ -24,8 +24,6 @@ class AlunosController extends Controller
             ["titulo"=>"Lista de Alunos", "url"=>""]
         ]);
 
-        //$listaModelo = Aluno::select('id','cod_aluno','nome_aluno','curso_id')->paginate(10);
-
         $listaModelo = DB::table('alunos')
                        ->join('cursos','cursos.id','=','alunos.curso_id')
                        ->select('alunos.id','alunos.cod_aluno','alunos.nome_aluno','cursos.nome')

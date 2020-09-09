@@ -26,17 +26,7 @@ class CursosController extends Controller
 
         $listaCursos = Curso::select('id','codigo','nome','data_cadastro','carga_horaria')->paginate(10);
 
-        $listaModelo = Aluno::select('id','cod_aluno','nome_aluno','curso_id')->paginate(10);
-        
-        //necessária revisão
-        
-        //dd($listaModelo);
-        // foreach ($listaModelo as $key => $value) {
-        //     $value->curso_id = $value->alunos->nome_aluno;
-        //     unset($value->alunos);
-        // }
-
-        return view('admin.cursos.index',compact('listaMigalhas','listaCursos','listaModelo'));
+        return view('admin.cursos.index',compact('listaMigalhas','listaCursos'));
     }
 
     /**

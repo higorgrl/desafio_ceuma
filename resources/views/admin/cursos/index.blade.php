@@ -12,13 +12,13 @@
             </div>
         @endif
 
-        <painel titulo="Lista de Artigos">
+        <painel titulo="Lista de Cursos">
             <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
             
             <tabela-lista
             v-bind:titulos="['#','Código','Nome','Data de Cadastro','Carga Horária']"
             v-bind:itens="{{json_encode($listaCursos)}}"
-            criar="#criar" detalhe="/admin/cursos/" editar="/admin/cursos/" deletar="/admin/cursos/" token="{{ csrf_token() }}"
+            criar="#criar" editar="/admin/cursos/" deletar="/admin/cursos/" token="{{ csrf_token() }}"
             modal="sim"
 
             ></tabela-lista>
@@ -77,9 +77,5 @@
         <span slot="botoes">
             <button form="formEditar" class="btn btn-info">Atualizar</button>
         </span>
-    </modal>
-
-    <modal nome="detalhe" titulo="Detalhe">
-        <div>{{json_encode($listaModelo)}}</div>
     </modal>
 @endsection
